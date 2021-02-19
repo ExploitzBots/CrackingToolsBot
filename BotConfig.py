@@ -8,7 +8,7 @@ class Config(object):
     DB_URI = os.environ.get("DATABASE_URL", None)
     API_HASH = os.environ.get("API_HASH", None)
     API_ID = int(os.environ.get("APP_ID", 6))
-    LOG_CHAT = int(os.environ.get("LOG_CHAT", -111111))
+    LOG_CHAT = int(os.environ.get("LOG_CHAT", -111111)
     OWNER_ID = int(os.environ.get("OWNER_ID", None))
     JTU_ENABLE = os.environ.get("JTU_ENABLE", False)
     JTU_ID = int(os.environ.get("JTU_ID", False))
