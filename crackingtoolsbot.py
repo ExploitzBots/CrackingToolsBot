@@ -375,7 +375,7 @@ async def no_help(event):
     /vortex <email:password> - Checks One Account
     /vortex combo - Reply To Combos File And Limit is 20.
     /proxy - Reply To Proxy File Only, Check Your Proxies
-    BY @ExploitzBots
+    BY @MadPremium
     """
     await event.reply(f'**Hai, {firstname} !, Here is List Of Cmds \n{lol_br}**')
                 
